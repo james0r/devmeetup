@@ -27,7 +27,6 @@
         v-for="item in menuItems" 
         :key="item.title" 
         flat
-        router
         :to="item.link">
           <v-icon left>{{ item.icon }}</v-icon>
           {{ item.title }}

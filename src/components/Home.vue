@@ -2,10 +2,10 @@
   <v-container>
     <v-layout row wrap>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large router to="/meetups" class="info">Explore Meetups</v-btn>
+        <v-btn large to="/meetups" class="info">Explore Meetups</v-btn>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large router to="/meetup/new" class="info">Organize Meetup</v-btn>
+        <v-btn large to="/meetup/new" class="info">Organize Meetup</v-btn>
       </v-flex>
     </v-layout>
     <v-layout row wrap class="mt-2">
@@ -14,7 +14,9 @@
           <v-carousel-item
             v-for="meetup in meetups"
             :src="meetup.imageUrl"
-            :key="meetup.id">
+            :key="meetup.id"
+            @click.native="onLoadMeetup(meetup.id)"
+            style="cursor: pointer">
             <div class="title">
               {{ meetup.title }}
             </div>
@@ -32,12 +34,14 @@
 
 <script>
     export default {
-        data () {
-            return {
-                meetups: [
-                    { imageUrl: 'https://s16-us2.ixquick.com/cgi-bin/serveimage?url=https:%2F%2Fmedia.timeout.com%2Fimages%2F103444978%2Fimage.jpg&sp=c40c14bccab1cf8b2bde1e45add4906e', id: ';ljhskda;lfkjhs;dlf', title: 'Meet up in NY'},
-                    { imageUrl: 'https://s14-eu5.ixquick.com/cgi-bin/serveimage?url=http:%2F%2Ftheflightfinder.com%2Fwp-content%2Fuploads%2F2017%2F12%2Fparis.jpg&sp=ccd63f89d29f7b2b52394f644effed47', id: ';ljhskda;lfkjhs;dlf', title: 'Meet up in Paris'}
-                ]
+        computed: {
+            meetups () {
+                return this.$store.getters.featuredMeetups
+            }
+        },
+        methods: {
+            onLoadMeetup(id) {
+                this.$router.push('/meetups/' + id);
             }
         }
     }
