@@ -61,8 +61,7 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3 mb-2>
-              <v-date-picker year-icon v-model="date"></v-date-picker>
-              <p>{{ date }}</p>
+              <v-date-picker v-model="date"></v-date-picker>
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -78,7 +77,6 @@
               type="submit"
               :disabled="!formIsValid"
               >Create Meetup</v-btn>
-              <p>{{ submittableDateTime }}</p>
             </v-flex>
           </v-layout>
         </form>

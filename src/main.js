@@ -5,6 +5,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import { store } from './store'
 import Moment from 'moment'
+import DateFilter from './filters/date'
 // app.js
 
 Vue.use(Vuetify, {
@@ -16,7 +17,7 @@ Vue.use(Vuetify, {
   }
 })
 
-
+Vue.filter('date', DateFilter)
 
 Vue.config.productionTip = false
 
