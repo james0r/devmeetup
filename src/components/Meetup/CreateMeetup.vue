@@ -61,7 +61,7 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3 mb-2>
-              <v-date-picker v-model="date"></v-date-picker>
+              <v-date-picker year-icon v-model="date"></v-date-picker>
               <p>{{ date }}</p>
             </v-flex>
           </v-layout>
@@ -78,6 +78,7 @@
               type="submit"
               :disabled="!formIsValid"
               >Create Meetup</v-btn>
+              <p>{{ submittableDateTime }}</p>
             </v-flex>
           </v-layout>
         </form>
@@ -106,6 +107,20 @@ import moment from 'moment'
         this.description !== '' && 
         this.imageUrl !== ''
       },
+      submittableDateTime() {
+        const date = new Date(this.date)
+        if (typeof this.time === 'string') {
+          const hours = this.time.match(/^(\d+)/)[1]
+          const minutes = this.time.match(/:(\d+)/)[1]
+          date.setHours(hours)
+          date.setMinutes(minutes)
+        } else {
+          date.setHours(this.time.getHours())
+          date.setMinutes(this.time.getMinutes())
+        }
+        console.log(date)
+        return date
+      }
     },
     methods: {
       onCreateMeetup () {
@@ -117,7 +132,7 @@ import moment from 'moment'
           location: this.location,
           description: this.description,
           imageUrl: this.imageUrl,
-          date: new Date()
+          date: this.submittableDateTime
         }
         this.$store.dispatch('createMeetup', meetupData)
         this.$router.push('/meetups')
