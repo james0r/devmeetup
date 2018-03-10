@@ -4,6 +4,7 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import { store } from './store'
+import Moment from 'moment'
 // app.js
 
 Vue.use(Vuetify, {
@@ -15,6 +16,8 @@ Vue.use(Vuetify, {
   }
 })
 
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -22,5 +25,6 @@ new Vue({
   el: '#app',
   router,
   store,
+  Moment,
   render: h => h(App)
 })

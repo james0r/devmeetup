@@ -56,6 +56,23 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
+              <h2>Choose a Date & Time</h2>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3 mb-2>
+              <v-date-picker v-model="date"></v-date-picker>
+              <p>{{ date }}</p>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-time-picker v-model="time"></v-time-picker>
+              <p>{{ time }}</p>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
               <v-btn 
               class="primary" 
               type="submit"
@@ -70,13 +87,16 @@
 </template>
 
 <script>
+import moment from 'moment'
   export default {
     data () {
       return {
         title: '',
         location: '',
         imageUrl: '',
-        description: ''
+        description: '',
+        date: moment().format('YYYY[-]MM[-]DD'),
+        time: new Date()
       }
     },
     computed: {
@@ -85,7 +105,7 @@
         this.location !== '' && 
         this.description !== '' && 
         this.imageUrl !== ''
-      }
+      },
     },
     methods: {
       onCreateMeetup () {
