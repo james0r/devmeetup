@@ -5,7 +5,6 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import { store } from './store'
 // app.js
-import './stylus/main.styl'
 
 Vue.use(Vuetify, {
   theme: {
