@@ -7,6 +7,7 @@ import 'vuetify/dist/vuetify.min.css'
 import { store } from './store'
 import Moment from 'moment'
 import DateFilter from './filters/date'
+import AlertCmp from './components/Shared/Alert.vue'
 // app.js
 
 Vue.use(Vuetify, {
@@ -19,6 +20,7 @@ Vue.use(Vuetify, {
 })
 
 Vue.filter('date', DateFilter)
+Vue.component('app-alert', AlertCmp)
 
 Vue.config.productionTip = false
 
@@ -32,10 +34,10 @@ new Vue({
   created () {
     firebase.initializeApp({
       apiKey: "AIzaSyAo7m3LZyKLL4TZ7WDcxl1V0CnYA3XCKb4",
-    authDomain: "devmeetup-vue-vuetify.firebaseapp.com",
-    databaseURL: "https://devmeetup-vue-vuetify.firebaseio.com",
-    projectId: "devmeetup-vue-vuetify",
-    storageBucket: "devmeetup-vue-vuetify.appspot.com"
+      authDomain: "devmeetup-vue-vuetify.firebaseapp.com",
+      databaseURL: "https://devmeetup-vue-vuetify.firebaseio.com",
+      projectId: "devmeetup-vue-vuetify",
+      storageBucket: "devmeetup-vue-vuetify.appspot.com"
     })
   }
 })
