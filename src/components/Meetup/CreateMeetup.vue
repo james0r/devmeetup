@@ -30,12 +30,8 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field 
-              name="imageUrl"
-              label="Image URL"
-              id="image-url"
-              v-model="imageUrl"
-              required></v-text-field>
+              <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
+              <input type="file" style="display: none" ref="fileInput" accept="image/*">
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -134,6 +130,9 @@ import moment from 'moment'
         }
         this.$store.dispatch('createMeetup', meetupData)
         this.$router.push('/meetups')
+      },
+      onPickFile () {
+        this.$refs.fileInput.click();
       }
     }
   }
