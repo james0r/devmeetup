@@ -5,7 +5,7 @@
             <v-progress-circular 
             indeterminate 
             color="primary"
-            width="6"
+            :width="6"
             size="70" 
             v-if="loading">
             </v-progress-circular>
@@ -28,11 +28,18 @@
                 </v-card-media>
                 <v-card-text>
                 <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }}</div>
+                <div><app-edit-meetup-date-dialog :meetup="meetup" v-if="userIsCreator"></app-edit-meetup-date-dialog>
+                <app-edit-meetup-time-dialog
+                :meetup="meetup"
+                v-if="userIsCreator">
+
+                </app-edit-meetup-time-dialog>
+                </div>
                     <div>{{ meetup.description }}</div>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn class="primary mr-2">Register</v-btn>
+                    <app-meetup-register-dialog :meetupId="meetup.id"></app-meetup-register-dialog>
                 </v-card-actions>
               </v-card>
           </v-flex>
@@ -59,6 +66,6 @@
             loading () {
               return this.$store.getters.loading
             }
-        },
+        }
     }
 </script>
