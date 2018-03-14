@@ -2,10 +2,10 @@
   <v-container>
     <v-layout row wrap>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large to="/meetups" class="info">Explore Meetups</v-btn>
+        <v-btn large to="/meetups" class="info">Browse Meetups</v-btn>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large to="/meetup/new" class="info">Organize Meetup</v-btn>
+        <v-btn large to="/meetup/new" class="info">Create Meetup</v-btn>
       </v-flex>
     </v-layout>
     <v-layout>
@@ -13,7 +13,7 @@
         <v-progress-circular 
         indeterminate 
         color="primary"
-        width="6"
+        :width="6"
         size="70" 
         v-if="loading">
         </v-progress-circular>
@@ -51,7 +51,7 @@
             },
             loading () {
               return this.$store.getters.loading
-            }
+            },
         },
         methods: {
             onLoadMeetup(id) {

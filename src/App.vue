@@ -3,6 +3,13 @@
       <v-navigation-drawer v-model="sideNav" fixed app>
         <v-list>
           <v-list-tile 
+          v-if="userEmailExists"
+          :userEmail="userEmail">
+            <v-list-tile-title class="title" style="text-transform: uppercase">
+              Hello, {{ userEmail }}
+            </v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile 
           v-for="item in menuItems" 
           :key="item.title"
           router
@@ -49,6 +56,13 @@
           <v-icon left>exit_to_app</v-icon>
           Logout
         </v-btn>
+        <v-btn
+        v-if="userEmailExists" 
+        flat
+        v-bind:userEmail="userEmail">
+          <v-icon left>account_circle</v-icon>
+          {{ userEmail }}
+        </v-btn>
         </v-toolbar-items>
     </v-toolbar>
     <main>
@@ -72,16 +86,27 @@ export default {
       ]
       if (this.userIsAuthenticated) {
         menuItems = [
-          { icon: 'home', title: 'Home', link: '/'},
           { icon: 'supervisor_account', title: 'View Meetups', link: '/meetups'},
-          { icon: 'room', title: 'Organize Meetup', link: '/meetup/new'},
+          { icon: 'room', title: 'Create Meetup', link: '/meetup/new'},
           { icon: 'person', title: 'Profile', link: '/profile'}
         ]
       }
       return menuItems
     },
+    userEmail () {
+      let tempString = 'Not Logged In.'
+      if (this.userEmailExists) {
+        tempString = this.$store.getters.user.email
+      } 
+      return tempString
+    },
     userIsAuthenticated () {
       return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    },
+    userEmailExists () {
+      if (this.userIsAuthenticated) {
+        return this.$store.getters.user.email !== null && this.$store.getters.user.email !== undefined
+      }
     }
   },
   methods: {

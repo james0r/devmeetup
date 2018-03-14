@@ -71,13 +71,12 @@
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-time-picker v-model="time"></v-time-picker>
-              <p>{{ time }}</p>
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-btn 
-              class="primary" 
+              class="primary mt-3" 
               type="submit"
               :disabled="!formIsValid"
               >Create Meetup</v-btn>
