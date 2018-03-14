@@ -12,6 +12,7 @@
   "dependencies": {
     "firebase": "^4.11.0",
     "font-awesome": "^4.7.0",
+    "google-fonts-webpack-plugin": "^0.4.4",
     "moment": "^2.21.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",

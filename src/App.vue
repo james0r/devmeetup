@@ -37,7 +37,7 @@
     <v-toolbar dark class="primary">
       <v-toolbar-side-icon @click="sideNav = !sideNav" class="hidden-md-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">DevMeetup</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer; font-family: Homemade Apple">DevMeetup</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
